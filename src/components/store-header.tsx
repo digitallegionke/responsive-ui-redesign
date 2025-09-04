@@ -1,4 +1,4 @@
-import { PhoneCall, Store, MapPin, Clock } from "lucide-react";
+import { PhoneCall, Store, MapPin, Clock, ExternalLink } from "lucide-react";
 
 interface StoreHeaderProps {
   storeName?: string;
@@ -43,56 +43,71 @@ export default function StoreHeader({
 
         {/* Contact Information */}
         <div className="flex-shrink-0 lg:w-80">
-          <div className="space-y-4">
+          <div className="bg-secondary/30 rounded-xl p-5 space-y-5">
+            <div className="text-base font-semibold text-foreground mb-4">Contact Information</div>
+            
             {/* Website */}
-            <div className="flex items-start gap-3">
-              <Store className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-              <div>
-                <div className="text-sm font-medium text-foreground">Website</div>
+            <div className="group flex items-start gap-4 p-3 rounded-lg hover:bg-white/80 transition-all duration-200 hover:shadow-sm">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Store className="w-4 h-4 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-semibold text-foreground mb-1">Website</div>
                 <a
                   href={`https://${websiteUrl}`}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium group/link"
                   target="_blank"
                   rel="noopener noreferrer">
-
-                  {websiteUrl}
+                  <span className="truncate">{websiteUrl}</span>
+                  <ExternalLink className="w-3 h-3 opacity-60 group-hover/link:opacity-100 transition-opacity" />
                 </a>
               </div>
             </div>
 
             {/* Phone */}
-            <div className="flex items-start gap-3">
-              <PhoneCall className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-              <div>
-                <div className="text-sm font-medium text-foreground">Phone</div>
+            <div className="group flex items-start gap-4 p-3 rounded-lg hover:bg-white/80 transition-all duration-200 hover:shadow-sm">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <PhoneCall className="w-4 h-4 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-semibold text-foreground mb-1">Phone</div>
                 <a
                   href={`tel:${phoneNumber}`}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-
+                  className="text-sm text-primary hover:text-primary/80 transition-colors font-medium">
                   {phoneNumber}
                 </a>
               </div>
             </div>
 
             {/* Address */}
-            <div className="flex items-start gap-3">
-              <MapPin className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-              <div>
-                <div className="text-sm font-medium text-foreground">Address</div>
-                <div className="text-sm text-muted-foreground">
+            <div className="group flex items-start gap-4 p-3 rounded-lg hover:bg-white/80 transition-all duration-200 hover:shadow-sm">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <MapPin className="w-4 h-4 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-semibold text-foreground mb-1">Address</div>
+                <div className="text-sm text-muted-foreground leading-relaxed">
                   {address}
                 </div>
               </div>
             </div>
 
             {/* Hours */}
-            <div className="flex items-start gap-3">
-              <Clock className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-              <div>
-                <div className="text-sm font-medium text-foreground">Hours</div>
+            <div className="group flex items-start gap-4 p-3 rounded-lg hover:bg-white/80 transition-all duration-200 hover:shadow-sm">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                <Clock className="w-4 h-4 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-semibold text-foreground mb-1">Hours</div>
                 <div className="text-sm text-muted-foreground space-y-1">
-                  <div>{weekdayHours}</div>
-                  <div>{weekendHours}</div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Weekdays</span>
+                    <span>{weekdayHours.split(': ')[1]}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Weekends</span>
+                    <span>{weekendHours.split(': ')[1]}</span>
+                  </div>
                 </div>
               </div>
             </div>
